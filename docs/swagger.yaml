@@ -1,0 +1,87 @@
+basePath: /
+definitions:
+  dto.BaseFailure:
+    properties:
+      error:
+        type: string
+      message:
+        type: string
+      success:
+        default: false
+        type: boolean
+    type: object
+  dto.BaseSuccess:
+    properties:
+      data: {}
+      error:
+        type: string
+      message:
+        type: string
+      success:
+        default: true
+        type: boolean
+    type: object
+host: localhost:8000/api/v1
+info:
+  contact:
+    email: suport@italo.me
+    name: Italo Esdrass
+  description: This is a endpoint's example
+  license:
+    name: Italo 1.0
+    url: italoesdrass.me
+  termsOfService: italo.me
+  title: Music Example API
+  version: "0.1"
+paths:
+  /music/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user in the database
+      parameters:
+      - description: Email
+        in: body
+        name: email
+        required: true
+        schema:
+          type: string
+      - description: Name
+        in: body
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: Date
+        in: body
+        name: date
+        required: true
+        schema:
+          type: string
+      - description: City
+        in: body
+        name: city
+        required: true
+        schema:
+          type: string
+      - description: Contact
+        in: body
+        name: contact
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Success
+          schema:
+            $ref: '#/definitions/dto.BaseSuccess'
+        "400":
+          description: Invalid request
+          schema:
+            $ref: '#/definitions/dto.BaseFailure'
+      summary: Create a new user
+      tags:
+      - music
+swagger: "2.0"
